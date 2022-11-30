@@ -1,6 +1,4 @@
-function getValues() 
-{
-    
+function getValues() {
     // get values from DOM.
     let fizzValue = document.getElementById("fizzValue").value;
     let buzzValue = document.getElementById("buzzValue").value;
@@ -13,7 +11,7 @@ function getValues()
     if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
        
         let fbData = FizzBuzz(fizzValue,buzzValue);
-        displayValues(fbData);
+        displayData(fbData);
 
     } else {
         alert("Please enter only integers!")
@@ -42,36 +40,22 @@ function FizzBuzz(fizzValue, buzzValue) {
     return returnArray;
 }
 
-function displayValues(fbData){
-
-    let templateRow = "";
-
-    for (let index = 0; index <= fbData.length - 1; index++) {
-        templateRow += `<tr><td>${fbData[index]}</td></tr>`;   
-    }
-    
-    document.getElementById("results").innerHTML = templateRow;
-}
-
-
-
-
 //custom display function
 function displayData(fbData) {
 
     //get the table body element from the page
     let tableBody = document.getElementById("results");
 
-    //get the row from the template
+    //get the row template
     let templateRow = document.getElementById("fbTemplate");
 
-    //clear table first
+    //clear the table.
     tableBody.innerHTML = "";
 
     for (let i = 0; i < fbData.length; i += 5) {
         const tableRow = document.importNode(templateRow.content, true);
         //grab only the columns in the template
-        rowCols = tableRow.querySelectorAll("td");
+        let rowCols = tableRow.querySelectorAll("td");
 
         rowCols[0].classList.add(fbData[i]);
         rowCols[0].textContent = fbData[i];
