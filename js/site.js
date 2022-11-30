@@ -7,13 +7,14 @@ function getValues()
     
    
     // parse the values into integers.
-    let fizzValueInt = fizzValue.parseInt();
-    let buzzValueInt = buzzValue.parseInt();
+    fizzValue = parseInt(fizzValue);
+    buzzValue = parseInt(buzzValue);
     
-    if(Number.isInteger(fizzValueInt) && Number.isInteger(buzzValueInt)){
+    if(Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
        
-        let fbData = FizzBuzz(fizzValueInt,buzzValueInt);
-        displayData(fbData);
+        let fbData = FizzBuzz(fizzValue,buzzValue);
+        displayValues(fbData);
+
     } else {
         alert("Please enter only integers!")
     }     
@@ -21,27 +22,39 @@ function getValues()
 
 
 //Traditional Solve Fizz Buzz with a for loop
-function FizzBuzz(fizzValueInt, buzzValueInt) {
-    //DO:
-    //Use "let" to declare an array variable "returnArray"
-    //Set it equal to []
+function FizzBuzz(fizzValue, buzzValue) {
+    
     let returnArray = [];
 
     for (let index = 1; index <= 100; index++) {
         
-        if(index % fizzValueInt == 0 && index % buzzValueInt == 0){
+        if(index % fizzValue == 0 && index % buzzValue == 0){
             returnArray.push("FizzBuzz");
-        } else if (index % fizzValueInt == 0){
+        } else if (index % fizzValue == 0){
             returnArray.push("Fizz");
-        } else if (index % buzzValueInt == 0){
+        } else if (index % buzzValue == 0){
             returnArray.push("Buzz");
         } else {
             returnArray.push(index);
         }   
     }
-    
+
     return returnArray;
 }
+
+function displayValues(fbData){
+
+    let templateRow = "";
+
+    for (let index = 0; index <= fbData.length - 1; index++) {
+        templateRow += `<tr><td>${fbData[index]}</td></tr>`;   
+    }
+    
+    document.getElementById("results").innerHTML = templateRow;
+}
+
+
+
 
 //custom display function
 function displayData(fbData) {
