@@ -1,101 +1,46 @@
 function getValues() 
 {
-    //1. get value to test Fizz
-    //DO:
-    //Use "let" to declare a variable "fizzValue".  
-    //Assign it the value that you find in the the Html element
-    //with the id "fizzValue".  HINT: Use document.getElementById
     
+    // get values from DOM.
+    let fizzValue = document.getElementById("fizzValue").value;
+    let buzzValue = document.getElementById("buzzValue").value;
     
-    //2. get value to test Buzz
-    //DO:
-    //Use "let" to declare a variable "buzzValue".  
-    //Assign it the value that you find in the the Html element
-    //with the id "buzzValue".  HINT: Use document.getElementById
+   
+    // parse the values into integers.
+    let fizzValueInt = fizzValue.parseInt();
+    let buzzValueInt = buzzValue.parseInt();
     
-
-    //3. check for numbers
-    //DO:
-    //Convert "fizzValue" to an integer using parseInt()
-
-    
-    //4. check for numbers
-    //DO:
-    //Convert "buzzValue" to an integer using parseInt()
-
-    //5. validate that "fizzValue" and "buzzValue" are actually Numbers.
-    //DO:
-    //Use an "if-else-statement" to test the logical conjunction (AND &&) 
-    //of the Number.isInteger() of "fizzValue" and "buzzValue"
-    {
-        //6. we call generateNumbers
-        //DO:
-        //Use "let" to declare a variable "fbData".
-        //Set it equal to the result of FizzBuzz(fizzValue, buzzValue)
-        
-        //7. we call displayNumbers
-        //DO:
-        //Call custom function "displayData()" with "fbData" as the parameter
-        //displayData(fbData);
-
+    if(Number.isInteger(fizzValueInt) && Number.isInteger(buzzValueInt)){
+       
+        let fbData = FizzBuzz(fizzValueInt,buzzValueInt);
+        displayData(fbData);
     } else {
-        //DO:
-        //Else if "fizzValue" and "buzzValue" are not Numbers
-        //send an alert to the user with the message "You must enter integers"
+        alert("Please enter only integers!")
+    }     
+ }
 
-    }
-
-}
 
 //Traditional Solve Fizz Buzz with a for loop
-function FizzBuzz(value1, value2) {
+function FizzBuzz(fizzValueInt, buzzValueInt) {
     //DO:
     //Use "let" to declare an array variable "returnArray"
     //Set it equal to []
+    let returnArray = [];
 
-    //DO:
-    //Use "for-loop" to count form 1 to 100 using
-    //"i" as the loop control variable
-    {
-        //DO:
-        //Use an "if-else-statement" to evaluate the parameters
-        //DO:
-        //Use an "if-else-statement" to test each number against the zero modulus(%)
-        //of the parameters "value1" (fizz) and "value2" (buzz) . (ie. i % value1 == 0)
-        //First test whether the case is true for both "value1" AND (&&) "value2"
-        {
-            //DO:
-            //If the AND case is true then "push" the value 'FizzBuzz'
-            //onto the "returnArray"
-            
-        } 
-        //DO:
-        //Else test if only the zero modulus(%)
-        //of the "value1" is true
-        {
-            //DO:
-            //If true then "push" the value 'Fizz' onto the "returnArray"
-            
-        } 
-        //DO:
-        //Else test if only the zero modulus(%)
-        //of the "value2" is true
-        {
-            //DO:
-            //If true then "push" the value 'Buzz' onto the "returnArray"
-            
-        } 
-        else
-        {
-            //DO:
-            //Else just push the number "i" onto the "returnArray"
-            
-        } 
+    for (let index = 1; index <= 100; index++) {
+        
+        if(index % fizzValueInt == 0 && index % buzzValueInt == 0){
+            returnArray.push("FizzBuzz");
+        } else if (index % fizzValueInt == 0){
+            returnArray.push("Fizz");
+        } else if (index % buzzValueInt == 0){
+            returnArray.push("Buzz");
+        } else {
+            returnArray.push(index);
+        }   
     }
     
-    //DO:
-    //Finally return the variable "returnArray"
-    
+    return returnArray;
 }
 
 //custom display function
