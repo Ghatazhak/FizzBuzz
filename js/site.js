@@ -19,7 +19,7 @@ function getValues() {
  }
 
 
-//Traditional Solve Fizz Buzz with a for loop
+// Using If/Else
 function FizzBuzz(fizzValue, buzzValue) {
     
     let returnArray = [];
@@ -39,6 +39,56 @@ function FizzBuzz(fizzValue, buzzValue) {
 
     return returnArray;
 }
+
+// Using Case Statements.
+function FizzBuzzB(fizzValue,buzzValue){
+    
+    let returnArray = [];
+    let Fizz = false;
+    let Buzz = false;
+
+    for (let index = 1; index <= 100; index++){
+        Fizz = index % fizzValue == 0;
+        Buzz = index % buzzValue == 0;
+
+        switch(true)
+        {
+            case Fizz && Buzz:{
+                returnArray.push("FizzBuzz");
+                break;
+            }
+            case Fizz: {
+                returnArray.push("Fizz");
+                break;
+            }
+            case Buzz: {
+                returnArray.push("Buzz");
+                break;
+            }
+            default: {
+                returnArray.push(index);
+                break;
+            }         
+        }
+    }
+    return returnArray;
+}
+
+
+
+// The best way to do FizzBuzz
+function FizzBuzzC(fizzValue,buzzValue){
+
+    let returnArray = [];
+
+    for (let index = 1; index <= 100; index++) {
+        let value = ((index % fizzValue == 0 ? "Fizz" : '') + (index % buzzValue == 0 ? "Buzz" : '') || index )
+        returnArray.push(value);  
+    }
+
+    return returnArray;
+}
+
 
 //custom display function
 function displayData(fbData) {
