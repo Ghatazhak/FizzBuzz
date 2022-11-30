@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #1D5888;
-    --secondary-color: #ff993b;
+    --primary-color: #336bdf;
+    --secondary-color: #ffba08;
     --dark-color: #292929;
     --white-color: #e7e7e7;
 }
@@ -53,6 +53,11 @@ footer .social>a:hover {
 
 .checklist > li i {
     color: var(--secondary-color);
+}
+
+.logoFont {
+    font-family: 'Luckiest Guy', cursive;
+    font-family: 'Odibee Sans', cursive;
 }
 
 /* Prism CSS */
